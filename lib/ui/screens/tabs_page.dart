@@ -26,7 +26,7 @@ class _MainTabsPageState extends State<MainTabsPage> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     final _block = BlocProvider.of<TabsBloc>(context);
-  //  final _menuBloc = BlocProvider.of<MenuBloc>(context);
+   // final _menuBloc = BlocProvider.of<MenuBloc>(context);
 
     return Material(
       child: CupertinoPageScaffold(
@@ -38,7 +38,7 @@ class _MainTabsPageState extends State<MainTabsPage> {
               currentIndex: currentIndex(_block),
               selectedItemColor: gold,
               onTap:  (index){
-              //  switchScreen(index, _block, _menuBloc);
+              //   switchScreen(index, _block, _menuBloc);
               },
               items: [
                 BottomNavigationBarItem(
@@ -81,23 +81,26 @@ class _MainTabsPageState extends State<MainTabsPage> {
     else if(bloc.currentState is SearchState) return 3;
     else return 2;
   }
-
-//  void switchScreen(int index, TabsBloc bloc, MenuBloc menuBloc) {
-//    switch (index) {
-//      case 0:
-//        bloc.dispatch( ProfilePressedEvent());
-//        break;
-//      case 1:
-//        bloc.dispatch(MessagesPressedEvent());
-//        break;
-//      case 2:
-//        menuBloc.dispatch(ShowMenuChooserEvent());
-//        bloc.dispatch( MenuPressedEvent());
-//        break;
-//      default:
-//        break;
-//    }
-//  }
+ // MenuBloc menuBloc
+  void switchScreen(int index, TabsBloc bloc, ) {
+    switch (index) {
+      case 0:
+        bloc.dispatch(ProfilePressedEvent());
+        break;
+      case 1:
+        bloc.dispatch(MessagesPressedEvent());
+        break;
+      case 2:
+       // menuBloc.dispatch(ShowMenuChooserEvent());
+        bloc.dispatch(FeedPressedEvent());
+        break;
+      case 3:
+        bloc.dispatch(SearchPressedEvent());
+        break;
+      default:
+        break;
+    }
+  }
 
   @override
   void setState(VoidCallback fn) {
